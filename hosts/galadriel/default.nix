@@ -33,16 +33,13 @@
     LC_TIME = "pt_PT.UTF-8";
   };
 
-  # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
 
   services.xserver.dpi = 125;
 
-  # Configure keymap in X11
   services.xserver = {
     layout = "us";
     xkbVariant = "colemak";
@@ -50,7 +47,6 @@
 
   services.printing.enable = false;
 
-  # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;

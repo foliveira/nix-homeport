@@ -11,11 +11,16 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "wl" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ]; 
+  boot.kernelParams = [
+    "hid_apple.fnmode=2"
+    "hid_apple.swap_fn_leftctrl=1"
+  ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/6ba55564-a4ad-4133-ad92-babb831c4c7f";
       fsType = "ext4";
+      options = [ "noatime" "nodiratime" "discard" ];
     };
 
   fileSystems."/boot" =
